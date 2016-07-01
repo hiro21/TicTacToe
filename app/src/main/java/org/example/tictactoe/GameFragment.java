@@ -79,7 +79,10 @@ public class GameFragment extends Fragment {
 
                 smallTile.setView(inner);
                 inner.setOnClickListener(new View.OnClickListener(){
+                    @Override
                     public void onClick(View view) {
+                        smallTile.animate();
+
                         if (isAvailable(smallTile)) {
                             makeMove(fLarge, fSmall);
                             switchTurns();
@@ -104,6 +107,7 @@ public class GameFragment extends Fragment {
         Tile.Owner winner = largeTile.findWinner();
 
         if (winner != oldWinner) {
+            largeTile.animate();
             largeTile.setOwner(winner);
         }
 
@@ -131,6 +135,7 @@ public class GameFragment extends Fragment {
     }
 
     private void addAvailable(Tile tile) {
+        tile.animate();
         mAvailable.add(tile);
     }
 
